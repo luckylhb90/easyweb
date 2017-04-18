@@ -25,4 +25,10 @@ public class TestServiceBean {
     public void setValue(String value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        System.out.println("TestServiceBean{}");
+        return "TestServiceBean{}";
+    }
 }

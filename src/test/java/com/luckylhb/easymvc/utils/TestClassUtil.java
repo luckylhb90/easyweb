@@ -15,10 +15,18 @@ public class TestClassUtil extends TestBase {
         System.out.println(ClassUtil.getClassLoader());
     }
 
+    /**
+     * http://blog.sina.com.cn/s/blog_7ffb8dd5010127ix.html
+     */
     @Test
     public void test_loadClass() {
-        System.out.println(ClassUtil.loadClass("com.luckylhb.easymvc.constants.ConfigConst"));
+        Class class1 = ClassUtil.loadClass("com.luckylhb.easymvc.constants.ConfigConst");
+        Class class2 = ClassUtil.loadClass("com.luckylhb.easymvc.constants.ConfigConst");
+        System.out.println(class1);
+        System.out.println(class2);
+        System.out.println(class1 == class2);
     }
+
 
     @Test
     public void test_getClassSet() {

@@ -16,6 +16,10 @@ public class TestControllerHelper extends TestBase {
     public void test_getActionMap() {
         Map<Request, Handler> requestHandlerMap = ControllerHelper.getActionMap();
         for (Map.Entry<Request, Handler> entry : requestHandlerMap.entrySet()) {
+            Request request = entry.getKey();
+            Handler handler = entry.getValue();
+            System.out.println(request.getRequestMethod() + "----" + request.getRequestPath());
+            System.out.println(handler.getControllerClass() + "=====" + handler.getActionMethod());
             System.out.println(entry.getKey());
             System.out.println(entry.getValue());
         }

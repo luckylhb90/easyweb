@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 扫描指定包（将带有 Component 注解的类自动定义为 Spring Bean）-->
+    <context:component-scan base-package="com.luckylhb.learn.proxy.springaop"/>
+
+    <bean id="helloProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!--需要代理的接口-->
+        <property name="proxyInterfaces" value="com.luckylhb.learn.proxy.springaop.service.Hello"/>
+        <!--接口实现类-->
+        <property name="target" value="com.luckylhb.learn.proxy.springaop.service.impl.HelloImpl"/>
+        <!--拦截器名称(也就是增强类名称，String Bean 的 id)-->
+        <property name="interceptorNames" >
+            <list>
+                <value>helloAroundAdvice</value>
+            </list>
+        </property>
+        <!--仅有一个增强类，可用如下配置-->
+        <!--<property name="interceptorNames" value="helloAroundAdvice"/>-->
+    </bean>
+</beans>

@@ -25,7 +25,7 @@ public class TestReflectionUtil extends TestBase {
     public void test_invokeMethod() throws Exception {
         Set<Class<?>> classSet = ClassHelper.getServiceClassSet();
         for (Class cls : classSet) {
-            Method method = cls.getMethod("testController");
+            Method method = cls.getMethod("toString");
             ReflectionUtil.invokeMethod(cls.newInstance(), method);
         }
     }
